@@ -18,11 +18,11 @@ A 2-week industry simulation capstone using Python, GitHub, and Tableau to conve
 | :--- | :--- | :--- |
 | **Project Lead** | Harsith | @Harsith-Panda |
 | **Data Lead** | Harinder | @Harenderchhoker31 |
-| **ETL Lead** | Harsith | @harsith-data |
+| **ETL Lead** | Harsith | @Harsith-Panda |
 | **Analysis Lead** | Aradhya | @AradhyaTiwari10 |
 | **Visualization Lead** | Khushi / Ishan | @Khushi-jain05 / @IshanMaheshwari-777 |
 | **Strategy Lead** | Khushi | @Khushi-jain05 |
-| **PPT and Quality Lead** | Praanshu |
+| **PPT and Quality Lead** | Aradhya / Praanshu |  @AradhyaTiwari10 |
 
 ## Business Problem
 Olist, a major marketplace integrator in Brazil, operates in a high-growth but logistically complex environment. The core challenge is the "Delivery Gap"—the variance between promised delivery dates and actual arrival times—which is the primary driver of negative customer reviews and brand erosion. This project serves the **Chief Operations Officer (COO)** and **Logistics Managers** by identifying structural bottlenecks in the seller-to-carrier handover and quantifying the "Satisfaction Cost" of these delays to drive operational reform.
