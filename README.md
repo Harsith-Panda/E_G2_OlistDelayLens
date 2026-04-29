@@ -17,7 +17,7 @@ A 2-week industry simulation capstone using Python, GitHub, and Tableau to conve
 | Role | Name | GitHub Username |
 | :--- | :--- | :--- |
 | **Project Lead** | Harsith | @Harsith-Panda |
-| **Data Lead** | Harinder |
+| **Data Lead** | Harinder | @Harenderchhoker31 |
 | **ETL Lead** | Harsith | @harsith-data |
 | **Analysis Lead** | Aradhya | @AradhyaTiwari10 |
 | **Visualization Lead** | Khushi / Ishan | @Khushi-jain05 / @IshanMaheshwari-777 |
