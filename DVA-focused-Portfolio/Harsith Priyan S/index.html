@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harsith Priyan S (harsith-data)</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>" />
+    <style>
+        /* GitHub Dark Mode Variables */
+        :root {
+            --gh-bg: #0d1117;
+            --gh-bg-secondary: #161b22;
+            --gh-bg-secondary-rgb: 22, 27, 34;
+            --gh-border: #30363d;
+            --gh-text-main: #c9d1d9;
+            --gh-text-muted: #8b949e;
+            --gh-link: #58a6ff;
+            --gh-btn-bg: #21262d;
+            --gh-btn-hover: #30363d;
+            --gh-btn-primary: #238636;
+            --gh-btn-primary-hover: #2ea043;
+            --gh-green: #2ea043;
+            --gh-orange: #e34c26;
+            --gh-yellow: #e3b341;
+            --gh-accent: #58a6ff;
+            
+            font-family:
+                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+                sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        }
+
+        /* Light Theme */
+        [data-theme="light"] {
+            --gh-bg: #ffffff;
+            --gh-bg-secondary: #f6f8fa;
+            --gh-bg-secondary-rgb: 246, 248, 250;
+            --gh-border: #d0d7de;
+            --gh-text-main: #24292f;
+            --gh-text-muted: #57606a;
+            --gh-link: #0969da;
+            --gh-btn-bg: #f6f8fa;
+            --gh-btn-hover: #eaeef2;
+            --gh-btn-primary: #1a7f37;
+            --gh-btn-primary-hover: #2da44e;
+            --gh-green: #1a7f37;
+            --gh-orange: #cf222e;
+            --gh-yellow: #9a6700;
+            --gh-accent: #0969da;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--gh-bg);
+            color: var(--gh-text-main);
+            line-height: 1.5;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--gh-link);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--gh-bg-secondary);
+            padding: 12px 24px;
+            border-bottom: 1px solid var(--gh-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(var(--gh-bg-secondary-rgb, 22, 27, 34), 0.85);
+            transition: background 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] header {
+            background: rgba(246, 248, 250, 0.85);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .header-logo svg {
+            fill: var(--gh-text-main);
+            width: 32px;
+            height: 32px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle {
+            background: var(--gh-btn-bg);
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            padding: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--gh-btn-hover);
+            border-color: var(--gh-text-muted);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gh-text-main);
+        }
+
+        .theme-toggle .sun-icon { display: none; }
+        .theme-toggle .moon-icon { display: block; }
+        [data-theme="light"] .theme-toggle .sun-icon { display: block; }
+        [data-theme="light"] .theme-toggle .moon-icon { display: none; }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            fill: white;
+            cursor: pointer;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            gap: 24px;
+            flex-grow: 1;
+        }
+
+        /* --- SIDEBAR (Profile) --- */
+        .sidebar {
+            width: 296px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .avatar {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid var(--gh-border);
+            margin-bottom: 16px;
+            object-fit: cover;
+        }
+
+        .vcard-names {
+            margin-bottom: 16px;
+        }
+
+        .vcard-fullname {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: var(--gh-text-main);
+        }
+
+        .vcard-username {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.25;
+            color: var(--gh-text-muted);
+        }
+
+        .user-profile-bio {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: var(--gh-text-main);
+        }
+
+        .btn-profile {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--gh-btn-bg);
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-main);
+            padding: 5px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 16px;
+        }
+
+        .btn-profile:hover {
+            background: var(--gh-btn-hover);
+            text-decoration: none;
+        }
+
+        .vcard-details {
+            list-style: none;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--gh-border);
+            padding-bottom: 16px;
+        }
+
+        .vcard-details li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+            color: var(--gh-text-main);
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .vcard-details svg {
+            fill: var(--gh-text-muted);
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .skills-section h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .badge {
+            border: 1px solid var(--gh-border);
+            padding: 2px 10px;
+            border-radius: 2em;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gh-text-muted);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .badge:hover {
+            border-color: var(--gh-link);
+            color: var(--gh-link);
+            transform: translateY(-1px);
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .content {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        /* Tabs */
+        .UnderlineNav {
+            display: flex;
+            border-bottom: 1px solid var(--gh-border);
+            margin-bottom: 20px;
+            gap: 8px;
+        }
+
+        .UnderlineNav-item {
+            padding: 8px 16px;
+            font-size: 14px;
+            color: var(--gh-text-main);
+            cursor: default;
+            border-bottom: 2px solid #f78166;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .UnderlineNav-item svg {
+            fill: var(--gh-text-muted);
+            width: 16px;
+            height: 16px;
+        }
+
+        .repo-count {
+            background: rgba(110, 118, 129, 0.4);
+            border-radius: 2em;
+            padding: 0 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* --- REPOSITORY FILTER BAR --- */
+        .repo-filter-bar {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gh-border);
+        }
+
+        .local-search {
+            background: var(--gh-bg);
+            border: 1px solid var(--gh-border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: var(--gh-text-main);
+            width: 100%;
+            max-width: 320px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .local-search:focus {
+            border-color: var(--gh-link);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+
+        .local-search::placeholder {
+            color: var(--gh-text-muted);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--gh-btn-bg);
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-main);
+            padding: 4px 14px;
+            border-radius: 2em;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: var(--gh-btn-hover);
+            border-color: var(--gh-text-muted);
+        }
+
+        .filter-btn.active {
+            background: var(--gh-link);
+            color: #fff;
+            border-color: var(--gh-link);
+        }
+
+        /* Repositories Grid */
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        /* Fade-in animation for cards */
+        .repo-card {
+            animation: fadeInUp 0.4s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger animation delays */
+        .repo-card:nth-child(1) { animation-delay: 0.05s; }
+        .repo-card:nth-child(2) { animation-delay: 0.1s; }
+        .repo-card:nth-child(3) { animation-delay: 0.15s; }
+        .repo-card:nth-child(4) { animation-delay: 0.2s; }
+        .repo-card:nth-child(5) { animation-delay: 0.25s; }
+        .repo-card:nth-child(6) { animation-delay: 0.3s; }
+        .repo-card:nth-child(7) { animation-delay: 0.35s; }
+        .repo-card:nth-child(8) { animation-delay: 0.4s; }
+
+        /* Repo Card with Image */
+        .repo-card {
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            background: var(--gh-bg);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+        }
+
+        .repo-card:hover {
+            border-color: var(--gh-text-muted);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-cover-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--gh-border);
+            transition: transform 0.3s ease;
+        }
+
+        .repo-card:hover .card-cover-image {
+            transform: scale(1.03);
+        }
+
+        .repo-card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .repo-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 8px;
+        }
+
+        .repo-title-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .repo-title-group svg {
+            fill: var(--gh-text-muted);
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .repo-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gh-link);
+            word-break: break-word;
+        }
+
+        .repo-badge {
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-muted);
+            font-size: 12px;
+            padding: 0 7px;
+            border-radius: 2em;
+            line-height: 18px;
+            white-space: nowrap;
+        }
+
+        .repo-desc {
+            color: var(--gh-text-muted);
+            font-size: 12px;
+            margin-bottom: 16px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .repo-tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .topic-tag {
+            background: rgba(56, 139, 253, 0.1);
+            color: var(--gh-link);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 0 10px;
+            border-radius: 2em;
+            line-height: 22px;
+            white-space: nowrap;
+        }
+
+        .repo-footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--gh-text-muted);
+            flex-wrap: wrap;
+        }
+
+        .lang-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .lang-excel {
+            background-color: var(--gh-green);
+        }
+
+        .lang-looker {
+            background-color: var(--gh-link);
+        }
+
+        .lang-tableau {
+            background-color: var(--gh-orange);
+        }
+
+        .lang-python {
+            background-color: var(--gh-yellow);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--gh-bg-secondary);
+            border: 1px solid var(--gh-border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gh-link);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gh-link);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gh-text-muted);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .stats-section {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        /* Contribution Graph */
+        .contrib-graph {
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 40px;
+            overflow-x: hidden;
+        }
+
+        .contrib-title {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .graph-squares {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .g-sq {
+            width: 11px;
+            height: 11px;
+            border-radius: 2px;
+            background: #161b22;
+            outline: 1px solid rgba(255, 255, 255, 0.05);
+            outline-offset: -1px;
+            transition: transform 0.15s ease;
+        }
+
+        .g-sq:hover {
+            transform: scale(1.3);
+            z-index: 1;
+        }
+
+        .g-l1 {
+            background: #0e4429;
+        }
+
+        .g-l2 {
+            background: #006d32;
+        }
+
+        .g-l3 {
+            background: #26a641;
+        }
+
+        .g-l4 {
+            background: #39d353;
+        }
+
+        /* No Results Message */
+        .no-results {
+            display: none;
+            padding: 40px;
+            text-align: center;
+            color: var(--gh-text-muted);
+            border: 1px dashed var(--gh-border);
+            border-radius: 6px;
+            grid-column: span 2;
+        }
+
+        /* --- SITE FOOTER (DYNAMIC YEAR) --- */
+        .site-footer {
+            border-top: 1px solid var(--gh-border);
+            padding: 40px 24px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--gh-text-muted);
+            background-color: var(--gh-bg);
+        }
+
+        .site-footer a {
+            color: var(--gh-link);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--gh-bg-secondary);
+            border: 1px solid var(--gh-border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.98);
+            transition: 0.2s;
+            box-shadow:
+                0 0 0 1px #30363d,
+                0 16px 32px rgba(0, 0, 0, 0.85);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--gh-border);
+            background: var(--gh-bg-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            word-break: break-word;
+            padding-right: 16px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--gh-text-muted);
+            cursor: pointer;
+            padding: 4px;
+            flex-shrink: 0;
+        }
+
+        .close-btn:hover {
+            color: var(--gh-text-main);
+        }
+
+        .close-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .modal-body {
+            padding: 16px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            border: 1px solid var(--gh-border);
+        }
+
+        .modal-desc {
+            font-size: 14px;
+            color: var(--gh-text-main);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .modal-footer {
+            padding: 16px;
+            border-top: 1px solid var(--gh-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            background: var(--gh-bg-secondary);
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-cancel {
+            background: var(--gh-btn-bg);
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-main);
+            padding: 5px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-cancel:hover {
+            background: var(--gh-btn-hover);
+        }
+
+        .btn-primary {
+            background: var(--gh-btn-primary);
+            border: 1px solid rgba(240, 246, 252, 0.1);
+            color: #fff;
+            padding: 5px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background: var(--gh-btn-primary-hover);
+            text-decoration: none;
+        }
+
+        .icon {
+            display: inline-block;
+            vertical-align: text-bottom;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .header-left {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-logo-container {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .container {
+                flex-direction: column;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .sidebar-header {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 16px;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 0;
+                max-width: none;
+            }
+
+            .vcard-names {
+                margin-bottom: 0;
+            }
+
+            .vcard-fullname {
+                font-size: 20px;
+            }
+
+            .vcard-username {
+                font-size: 16px;
+            }
+
+            .repo-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .no-results {
+                grid-column: span 1;
+            }
+
+            .contrib-graph {
+                padding: 12px;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button,
+            .modal-footer a {
+                width: 100%;
+            }
+
+            .local-search {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <div class="header-logo-container">
+                <button class="mobile-menu-btn">
+                    <svg viewBox="0 0 16 16" width="24" height="24">
+                        <path
+                            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+                        </path>
+                    </svg>
+                </button>
+                <div class="header-logo">
+                    <svg viewBox="0 0 44 44" width="42" height="42">
+                        <rect x="2" y="2" width="40" height="40" rx="10" fill="var(--gh-btn-bg)" stroke="var(--gh-border)" stroke-width="2"/>
+                        <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" fill="var(--gh-text-main)" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="22">SH</text>
+                    </svg>
+                </div>
+                <div style="width: 24px"></div>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg class="moon-icon" viewBox="0 0 24 24">
+                    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+                </svg>
+                <svg class="sun-icon" viewBox="0 0 24 24">
+                    <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="./Harsith3.jpeg" alt="Avatar" class="avatar" />
+                <div class="vcard-names">
+                    <h1 class="vcard-fullname">S. Harsith Priyan</h1>
+                    <h2 class="vcard-username">Harsith-Data</h2>
+                </div>
+            </div>
+
+            <div class="user-profile-bio">
+                Data Analyst turning complex datasets into clear, actionable
+                intelligence. I build scalable models and dashboards.
+            </div>
+
+            <a href="mailto:s.priyan2024@nst.rishihood.edu.in" class="btn-profile">Follow / Contact</a>
+
+            <ul class="vcard-details">
+                <li>
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z">
+                        </path>
+                    </svg>
+                    Chennai, India
+                </li>
+                <li>
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z">
+                        </path>
+                    </svg>
+                    <a href="mailto:s.priyan2024@nst.rishihood.edu.in">s.priyan2024@nst.rishihood.edu.in</a>
+                </li>
+                <li>
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">
+                        </path>
+                    </svg>
+                    <a href="https://linkedin.com/in/harsithpriyans" target="_blank">linkedin.com/in/harsithpriyans</a>
+                </li>
+            </ul>
+
+            <div class="skills-section">
+                <h2>Organizations</h2>
+                <div class="skills-badges">
+                    <span class="badge">Excel</span>
+                    <span class="badge">Looker Studio</span>
+                    <span class="badge">Tableau</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">SQL</span>
+                    <span class="badge">Pandas</span>
+                    <span class="badge">Matplotlib</span>
+                    <span class="badge">Seaborn</span>
+                    <span class="badge">Numpy</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <nav class="UnderlineNav">
+                <div class="UnderlineNav-item">
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                        </path>
+                    </svg>
+                    Repositories <span class="repo-count" id="repo-count-badge">8</span>
+                </div>
+            </nav>
+
+            <div class="repo-filter-bar">
+                <input type="text" id="repo-search" class="local-search" placeholder="Find a repository..." />
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="looker">Looker Studio</button>
+                    <button class="filter-btn" data-filter="python">Python</button>
+                    <button class="filter-btn" data-filter="tableau">Tableau</button>
+                    <button class="filter-btn" data-filter="sql">SQL</button>
+                </div>
+            </div>
+
+            <div class="repo-grid" id="repo-grid">
+                <div class="repo-card open-modal-btn" data-tech-stack="python,tableau,etl,statistics"
+                    data-title="Olist Delivery Delay Analytics"
+                    data-img="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+                    data-link="https://github.com/Harsith-Panda/E_G2_OlistDelayLens"
+                    data-desc="Built an end-to-end ETL pipeline on 100K+ e-commerce records to analyze delivery delays, seller risk, and customer satisfaction using statistical testing and Tableau dashboards.">
+                    <img src="./end-dash.jpg" alt="Olist Dashboard" class="card-cover-image" />
+
+                    <div class="repo-card-body">
+                        <div class="repo-header">
+                            <div class="repo-title-group">
+                                <svg class="icon">
+                                    <path
+                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                                    </path>
+                                </svg>
+                                <a href="https://github.com/Harsith-Panda/E_G2_OlistDelayLens" class="repo-title"
+                                    target="_blank">
+                                    Olist Delivery Delay Analytics
+                                </a>
+                            </div>
+                            <span class="repo-badge">Public</span>
+                        </div>
+
+                        <p class="repo-desc">
+                            Analyzed 100K+ orders to uncover a 36.7% rise in delivery delays
+                            and a 41% drop in customer satisfaction, using statistical
+                            testing and interactive Tableau dashboards.
+                        </p>
+
+                        <div class="repo-tags">
+                            <span class="topic-tag">python</span>
+                            <span class="topic-tag">tableau</span>
+                            <span class="topic-tag">etl</span>
+                            <span class="topic-tag">statistics</span>
+                        </div>
+
+                        <div class="repo-footer">
+                            <span><span class="lang-color lang-excel"></span> Python /
+                                Tableau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="repo-card open-modal-btn" data-tech-stack="looker,google-sheets,python,data-analytics,dashboard,public-finance"
+                    data-title="Procurement Risk & Spending Analytics" data-img="./mid-dash.jpg"
+                    data-link="https://github.com/Harsith-Panda/government-tender-procurement-analytics"
+                    data-desc="Analyzed 10,000+ public procurement contracts from the City of Chicago to uncover vendor concentration risk, approval delays, and spending inefficiencies. Built an interactive Google Sheets dashboard to deliver governance insights and data-driven decision support.">
+                    <img src="./mid-dash.jpg" alt="Procurement Dashboard" class="card-cover-image" />
+
+                    <div class="repo-card-body">
+                        <div class="repo-header">
+                            <div class="repo-title-group">
+                                <svg class="icon">
+                                    <path
+                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                                    </path>
+                                </svg>
+                                <a href="https://github.com/Harsith-Panda/government-tender-procurement-analytics"
+                                    class="repo-title" target="_blank">
+                                    Procurement Risk & Spending Analytics
+                                </a>
+                            </div>
+                            <span class="repo-badge">Public</span>
+                        </div>
+
+                        <p class="repo-desc">
+                            Interactive dashboard analyzing $31B+ public contracts to detect
+                            vendor risk, approval delays, and inefficiencies in government
+                            procurement systems.
+                        </p>
+
+                        <div class="repo-tags">
+                            <span class="topic-tag">data-analytics</span>
+                            <span class="topic-tag">dashboard</span>
+                            <span class="topic-tag">public-finance</span>
+                            <span class="topic-tag">google-sheets</span>
+                        </div>
+
+                        <div class="repo-footer">
+                            <span><span class="lang-color lang-looker"></span> Google
+                                Sheets</span>
+                            <span><span class="lang-color lang-looker"></span> Looker
+                                Studio</span>
+                            <span><span class="lang-color lang-looker"></span> Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="repo-card open-modal-btn" data-tech-stack="python,numpy,pandas,eda"
+                    data-title="EDA Practice & Data Analysis"
+                    data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                    data-link="https://github.com/Harsith-Panda/Exploratory-Data-Analysis-And-Data-Preprocessing"
+                    data-desc="Hands-on data analysis project applying NumPy and Pandas for data cleaning, transformation, and exploratory data analysis (EDA) on real-world datasets.">
+                    <img src="./eda.jpg" alt="EDA Analysis" class="card-cover-image" />
+
+                    <div class="repo-card-body">
+                        <div class="repo-header">
+                            <div class="repo-title-group">
+                                <svg class="icon">
+                                    <path
+                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                                    </path>
+                                </svg>
+                                <a href="https://github.com/Harsith-Panda/Exploratory-Data-Analysis-And-Data-Preprocessing"
+                                    class="repo-title" target="_blank">
+                                    EDA Practice & Data Analysis Learning Handbook
+                                </a>
+                            </div>
+                            <span class="repo-badge">Public</span>
+                        </div>
+
+                        <p class="repo-desc">
+                            Explored real-world datasets using NumPy and Pandas to perform
+                            data cleaning, feature engineering, and exploratory analysis to
+                            uncover patterns and insights.
+                        </p>
+
+                        <div class="repo-tags">
+                            <span class="topic-tag">python</span>
+                            <span class="topic-tag">numpy</span>
+                            <span class="topic-tag">pandas</span>
+                            <span class="topic-tag">eda</span>
+                        </div>
+
+                        <div class="repo-footer">
+                            <span><span class="lang-color lang-excel"></span> Python</span>
+                        </div>
+                    </div>
+                </div>
+
+            
+
+                <div class="no-results" id="no-results-msg">
+                    No repositories match your search or filter.
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Technologies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1+</div>
+                    <div class="stat-label">Years Exp</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>
+            &copy; <span id="current-year"></span> Harsith Priyan S . All rights
+            reserved.
+        </p>
+        <div style="margin-top: 8px">
+            <a href="https://linkedin.com/in/harsithpriyans" target="_blank">LinkedIn</a>
+            <a href="https://github.com/Harsith-Panda" target="_blank">GitHub</a>
+            <a href="mailto:s.priyan2024@nst.rishihood.edu.in">Contact</a>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="m-title">Project Title</div>
+                <button class="close-btn" id="close-modal">
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" id="m-img" alt="Project Cover" class="modal-img" />
+                <p class="modal-desc" id="m-desc">Full description goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancel-modal">Cancel</button>
+                <a href="#" target="_blank" class="btn-primary" id="m-link">View Live Repository</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. DYNAMIC FOOTER YEAR ---
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+
+        // --- 2. THEME TOGGLE ---
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        html.setAttribute("data-theme", savedTheme);
+        
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = html.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            html.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+        });
+
+        // --- 3. SEARCH AND FILTER FUNCTIONALITY ---
+        const searchInput = document.getElementById("repo-search");
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const repoCards = document.querySelectorAll(".repo-card");
+        const repoCountBadge = document.getElementById("repo-count-badge");
+        const noResultsMsg = document.getElementById("no-results-msg");
+
+        let currentSearchTerm = "";
+        let currentFilter = "all";
+
+        function filterRepositories() {
+            let visibleCount = 0;
+
+            repoCards.forEach((card) => {
+                const title = card.getAttribute("data-title").toLowerCase();
+                const desc = card.getAttribute("data-desc").toLowerCase();
+                const techStack = card.getAttribute("data-tech-stack").toLowerCase();
+
+                const matchesSearch =
+                    title.includes(currentSearchTerm) ||
+                    desc.includes(currentSearchTerm);
+                
+                const matchesFilter =
+                    currentFilter === "all" || techStack.includes(currentFilter);
+
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            repoCountBadge.innerText = visibleCount;
+            noResultsMsg.style.display = visibleCount === 0 ? "block" : "none";
+        }
+
+        // Handle Text Search
+        searchInput.addEventListener("input", (e) => {
+            currentSearchTerm = e.target.value.toLowerCase();
+            filterRepositories();
+        });
+
+        // Handle Button Filters
+        filterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                filterBtns.forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                currentFilter = btn.getAttribute("data-filter");
+                filterRepositories();
+            });
+        });
+
+        // Set initial count
+        filterRepositories();
+
+        // --- 3. MODAL LOGIC ---
+        const modal = document.getElementById("modal");
+        const closeModalBtn = document.getElementById("close-modal");
+        const cancelModalBtn = document.getElementById("cancel-modal");
+
+        const mTitle = document.getElementById("m-title");
+        const mDesc = document.getElementById("m-desc");
+        const mImg = document.getElementById("m-img");
+        const mLink = document.getElementById("m-link");
+
+        // Open Modal
+        repoCards.forEach((project) => {
+            project.addEventListener("click", () => {
+                mTitle.textContent = project.getAttribute("data-title");
+                mDesc.textContent = project.getAttribute("data-desc");
+                mImg.src = project.getAttribute("data-img");
+                mLink.href = project.getAttribute("data-link");
+
+                modal.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        // Close Modal
+        const closeModal = () => {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
+        };
+
+        closeModalBtn.addEventListener("click", closeModal);
+        cancelModalBtn.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeModal();
+        });
+    </script>
+</body>
+
+</html>
