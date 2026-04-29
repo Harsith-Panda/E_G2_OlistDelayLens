@@ -107,7 +107,7 @@ For full column definitions, see `docs/data_dictionary.md`.
 ## Contribution Matrix
 | Team Member | Dataset & Sourcing | ETL & Cleaning | EDA & Analysis | Statistical Analysis | Tableau Dashboard | Report Writing |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Harsith** | Owner | Owner | Support | - | Owner | Support |
+| **Harsith** | Owner | Owner | Support | - | support | Support |
 | **Harinder** | Owner | Support | - | - | - | - |
 | **Aradhya** | - | support | Owner | Owner | Support | Owner |
 | **Ishan** | - | - | Support | - | Owner | - |
