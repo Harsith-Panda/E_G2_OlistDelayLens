@@ -109,10 +109,10 @@ For full column definitions, see `docs/data_dictionary.md`.
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Harsith** | Owner | Owner | Support | - | Owner | Support |
 | **Harinder** | Owner | Support | - | - | - | - |
-| **Aradhya** | Support | - | Owner | Owner | Support | Owner |
+| **Aradhya** | - | support | Owner | Owner | Support | Owner |
 | **Ishan** | - | - | Support | - | Owner | - |
 | **Khushi** | - | - | Support | - | Owner | Support |
-| **Praanshu** | - | - | - | - | - | Owner |
+| **Praanshu** | - | - | - | - | support | Owner |
 
 ---
 **Newton School of Technology - Data Visualization & Analytics | Capstone 2**
